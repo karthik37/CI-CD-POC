@@ -1,0 +1,23 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 10-06-2020
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+  Modifications Log 
+  Ver   Date         Author                               Modification
+  1.0   10-01-2020   ChangeMeIn@UserSettingsUnder.SFDoc   Initial Version
+-->
+<template>
+  <lightning-card title="Summary">
+    <p class="slds-p-horizontal_small"><b>Total Transaction Currency Amount : {totalTxnCurrencyAmnt}</b></p>
+  </lightning-card>  
+  <lightning-card>
+        <lightning-datatable title="Transactions"
+          data={transactions.data}
+          columns={columns}
+          key-field="Id" 
+          hide-checkbox-column>
+       </lightning-datatable>
+    </lightning-card>
+</template>

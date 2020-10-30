@@ -1,0 +1,11 @@
+<template>
+    <lightning-card
+title="Transaction Records">
+        <lightning-datatable
+          data={transactions.data}
+          columns={columns}
+          key-field="Id"
+          hide-checkbox-column>
+       </lightning-datatable>
+    </lightning-card>
+</template>

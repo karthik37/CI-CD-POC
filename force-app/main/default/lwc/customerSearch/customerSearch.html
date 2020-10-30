@@ -1,0 +1,88 @@
+<template>
+    <div class="slds-m-around_medium">
+     
+        <div class="slds-m-bottom_small">
+            <lightning-input type="text"
+               value={accountName}
+               label="User Name"
+               onchange={updateSeachKey}
+               ></lightning-input>
+         </div>
+
+         <div class="slds-m-bottom_small">
+            <lightning-input type="text"
+               value={businessName}
+               label="Business Name"
+               onchange={updateBusinessName}
+               ></lightning-input>
+         </div>
+
+        <!-- <div class="slds-m-bottom_small">
+            <lightning-input type="text"
+               value={ebayEmployee}
+               label="Ebay Employee"
+               onchange={updateEbayEmployee}
+               ></lightning-input>
+         </div>
+
+        <div class="slds-m-bottom_small">
+            <lightning-input type="text"
+               value={recordType}
+               label="Record Type"
+               onchange={updateRecordType}
+               ></lightning-input>
+         </div> -->
+       
+         <!--<div class="slds-m-bottom_small"></div>
+         <lightning-combobox
+         name="Ebay Employee"
+         label="Ebay Employee"
+         placeholder=" chooseEbay Employee"
+         value={ebayEmployee}
+         onchange={updateEbayEmployee}
+         options={picklistOptions}>
+         </lightning-combobox> 
+         </div>-->
+          
+         <div class="slds-m-bottom_small">
+            <lightning-combobox
+            name="eBayEmployeeIndicator"
+            label="eBay Employee Indicator"
+            placeholder="choose RecordType"
+            value={ebayEmployee}
+            onchange={updateEbayEmployee}
+            options={picklistOptions}>
+            </lightning-combobox>
+            </div>
+
+         <div class="slds-m-bottom_small">
+         <lightning-combobox
+         name="RecordType"
+         label="RecordType"
+         placeholder=" choose RecordType"
+         value={recordType}
+         onchange={updateRecordType}
+         options={picklistOptionsRecordType}>
+         </lightning-combobox>
+         </div>
+
+         <div class="slds-m-bottom_small">
+            <lightning-record-edit-form object-api-name="Account">
+            <lightning-input-field field-name="Payment_Entities__c" value={paymentEntity} onchange={updateSearchKey}>  <!--Line 11-->
+            </lightning-input-field>
+         </lightning-record-edit-form>
+         </div>
+         
+         <lightning-button label="Search"
+            onclick={handleSearch}
+            variant="brand"></lightning-button>
+            
+      <div if:true={accountList}>
+      <lightning-datatable
+      key-field="id"
+      data={accountList}
+      columns={columns}>
+     </lightning-datatable>
+     </div>
+     </div> 
+</template>

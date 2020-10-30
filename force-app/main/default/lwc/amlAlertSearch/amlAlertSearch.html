@@ -1,0 +1,95 @@
+<template>
+    <div class="slds-m-around_medium">
+      <div class="slds-m-bottom_small">
+        <form class = "slds-form--stacked slds-grid slds-gutters" >
+          <!--col 1-->
+          <div class="slds-col--padded slds-size--1-of-1 slds-medium-size--1-of-2">
+            <div class="slds-form-element">
+              <legend class="slds-form-element__label">Alert Id</legend>
+              <div class="slds-form-element__control">
+                <lightning-input type="Number" value={alertId} onchange={alertIdChange}></lightning-input>
+              </div>
+            </div>
+            <div class="slds-form-element">
+              <fieldset class="slds-form--compound">
+                <legend class="slds-form-element__label">Run Date</legend>
+                <div class="form-element__group">
+                  <div class="slds-form-element__row">
+                    <label class="slds-form-element__control slds-size--1-of-2">
+                        <lightning-input type="Date" max={today} placeholder="From" value={runDateMin} onchange={runDateMinChange}></lightning-input>
+                    </label> 
+                    <label class="slds-form-element__control slds-size--1-of-2">
+                        <lightning-input type="Date" max={today} placeholder="To" value={runDateMax} onchange={runDateMaxChange}></lightning-input>
+                    </label>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+            <div class="slds-form-element">
+              <fieldset class="slds-form--compound">
+                <legend class="slds-form-element__label">Money Laundering Risk Score</legend>
+                <div class="form-element__group">
+                  <div class="slds-form-element__row">
+                    <label class="slds-form-element__control slds-size--1-of-2">
+                        <lightning-input type="Number" placeholder="Min" value={moneyLdRiskScoreMin} onchange={moneyLdRiskScoreMinChange}></lightning-input>
+                    </label> 
+                    <label class="slds-form-element__control slds-size--1-of-2">
+                        <lightning-input type="Number" placeholder="Max" value={moneyLdRiskScoreMax} onchange={moneyLdRiskScoreMaxChange}></lightning-input>
+                    </label>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+          </div>
+          <!--col 2-->
+          <div class="slds-col--padded slds-size--1-of-1 slds-medium-size--1-of-2">
+            <div class="slds-form-element">
+              <legend class="slds-form-element__label">Customer Oracle Id</legend>
+              <div class="slds-form-element__control">
+                <lightning-input type="text" value={oracleId} onchange={oracleIdChange} ></lightning-input>
+              </div>
+            </div>
+            <div class="slds-form-element">
+              <fieldset class="slds-form--compound">
+                <legend class="slds-form-element__label">Created Date</legend>
+                <div class="form-element__group">
+                  <div class="slds-form-element__row">
+                    <label class="slds-form-element__control slds-size--1-of-2">
+                        <lightning-input type="Date" max={today} placeholder="From" value={createDateMin} onchange={createDateMinChange} ></lightning-input>
+                    </label> 
+                    <label class="slds-form-element__control slds-size--1-of-2">
+                        <lightning-input type="Date" max={today} placeholder="To" value={createDateMax} onchange={createDateMaxChange}></lightning-input>
+                    </label>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+            <div class="slds-form-element">
+              <legend class="slds-form-element__label">Status</legend>
+              <div class="slds-form-element__control">
+                <div class="slds-form-element">
+                  <lightning-combobox name="status" placeholder="Choose Status" value={status} onchange={statusChange} options={statusOptions}></lightning-combobox>
+              </div>
+            </div>
+            </div>
+          </div>
+        </form>
+      <br>
+        <!--<lightning-button label="Search" onclick={handleSearchKeyword} variant="brand"></lightning-button>
+        <lightning-button label="Reset" onclick={handleResetSearch} variant="brand"></lightning-button>-->
+        <div class="slds-m-top_small slds-m-bottom_medium">
+          <lightning-button label="Search" onclick={handleSearchKeyword} variant="brand" class="slds-m-left_x-small"></lightning-button>
+          <lightning-button label="Reset" onclick={handleResetSearch} variant="brand" class="slds-m-left_x-small"></lightning-button>
+          </div>
+    <template if:true={alertList}>
+      <lightning-datatable  key-field="id" data={alertList} columns={columns}
+                            hide-checkbox-column="true" default-sort-direction={defaultSortDirection}
+                            sorted-direction={sortDirection} sorted-by={sortedBy}
+                            onsort={onHandleSort}> </lightning-datatable>
+   
+    </template>
+      </div>
+    </div>
+    
+    
+  </template>

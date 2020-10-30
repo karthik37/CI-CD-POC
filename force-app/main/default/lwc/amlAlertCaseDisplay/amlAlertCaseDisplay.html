@@ -1,0 +1,19 @@
+<template>
+    <lightning-button label="Escalate Alert" onclick={handleEscalation} variant="brand"></lightning-button>
+    <br>
+  <form class = "slds-form--stacked slds-grid slds-gutters">
+    <template if:true={cases.data}>
+        <lightning-datatable
+          data={cases.data}
+          columns={columns}
+          key-field="Id" 
+          onrowselection={handleRowSelection}
+          default-sort-direction={defaultSortDirection}
+          sorted-direction={sortDirection}
+          sorted-by={sortedBy}
+          onsort={onHandleSort}
+          show-row-number-column="true"> 
+    </lightning-datatable>
+    </template>
+</form>  
+</template>

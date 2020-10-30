@@ -1,0 +1,34 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 10-09-2020
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+  Modifications Log 
+  Ver   Date         Author                               Modification
+  1.0   10-01-2020   ChangeMeIn@UserSettingsUnder.SFDoc   Initial Version
+-->
+<template>
+  
+   <div>
+    <lightning:layout >
+      <lightning:layoutItem padding="around-small">
+          <div class="header-column">
+              <p class="field-title" title="Field 1">Total Transaction Currency Amount :</p>
+              <p>{totalTxnCurrencyAmount}</p>
+          </div>
+      </lightning:layoutItem>
+      </lightning:layout>
+    <b>Total Transaction Currency Amount : {totalTxnCurrencyAmount}</b></br>
+    <b>Total Transaction USD Amount : {totalTxnUSDAmount}</b>
+   </div> 
+  
+    <lightning-card title="Transactions">
+        <lightning-datatable 
+          data={transactions}
+          columns={columns}
+          key-field="Id" 
+          hide-checkbox-column>
+       </lightning-datatable>
+    </lightning-card>
+</template>

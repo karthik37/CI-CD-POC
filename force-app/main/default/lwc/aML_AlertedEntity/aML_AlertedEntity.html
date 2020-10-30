@@ -1,0 +1,40 @@
+<template>
+    <lightning-card title="Alerted Entity" variant="narrow" icon-name="custom:custom11">
+        <div class="slds-col slds-col--padded ">
+            <!--<div class="slds-theme--default slds-container--small">-->
+               <template if:true={alertEntities}>
+                    <template for:each={alertEntities} for:item="alertEntityRec">
+                        <li key={alertEntityRec.Id}>
+                            <div class="slds-grid slds-gutters">
+                                <div class="slds-col">
+                                    <span>
+                                        <lightning-input type="Number" label="Total Alerts" read-only="true" value={alertEntityRec.Total_Alerts__c}></lightning-input>
+                                    </span>
+                                </div>
+                                <div class="slds-col">
+                                    <span>
+                                        <lightning-input type="Number" label="Total Active Alerts" read-only="true" value={alertEntityRec.Total_Active_Alerts__c}></lightning-input>
+                                    </span>
+                                </div>
+                               <!--<div class="slds-col">
+                                    <span>
+                                        <lightning-input type="Number" label="Alert Age" read-only="true" value={alertEntityRec.Alert_Age__c}></lightning-input>
+                                    </span>
+                                </div>
+                                <div class="slds-col">
+                                    <span><lightning-input type="Text" label="Priority" read-only="true"  >
+                                        <img src={alertEntityRec.Priority__c} alt="Priority" class="image">
+                                    </lightning-input></span>
+                                </div>-->
+                            </div>
+                        </li>
+                    </template>
+                </template>
+            <template if:true={alertEntities.error}>
+                
+            </template>
+       </div>
+        <!--</div>-->
+    </lightning-card>
+    
+</template>

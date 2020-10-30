@@ -1,0 +1,95 @@
+<template>
+   <div class="slds-m-around_medium">
+     <div class="slds-m-bottom_small">
+       <form class = "slds-form--stacked slds-grid slds-gutters" >
+         <!--col 1-->
+         <div class="slds-col--padded slds-size--1-of-1 slds-medium-size--1-of-2">
+           <div class="slds-form-element">
+             <legend class="slds-form-element__label">User Name</legend>
+             <div class="slds-form-element__control">
+               <lightning-input id="User" type="text" value={userNameValue} onchange={updateSeachKey}></lightning-input>
+             </div>
+           </div>
+
+           <div class="slds-form-element">
+            <legend class="slds-form-element__label">Customer Oracle ID</legend>
+            <div class="slds-form-element__control">
+              <lightning-input type="text" value={oracleIdValue} onchange={updateOracleId}></lightning-input>
+            </div>
+          </div>
+
+           <div class="slds-form-element">
+            <legend class="slds-form-element__label">Business Name</legend>
+            <div class="slds-form-element__control">
+              <lightning-input type="text" value={businessNameValue} onchange={updateBusinessName}></lightning-input>
+            </div>
+          </div>
+
+          <div class="slds-form-element">
+            <br>
+            <lightning-combobox
+            name="eBayEmployeeIndicator"
+            label="eBay Employee Indicator"
+            placeholder="None"
+            value={ebayEmployeeValue}
+            onchange={updateEbayEmployee}
+            options={picklistOptions}>
+            </lightning-combobox>
+           </div>
+
+           <div class="slds-form-element">
+             <br>
+            <lightning-combobox
+            name="RecordType"
+            label="Customer Type"
+            placeholder="None"
+            value={recordTypeVale}
+            onchange={updateRecordType}
+            options={picklistOptionsRecordType}>
+            </lightning-combobox>
+           </div>
+           </div>
+           
+         <!--col 2-->
+         <div class="slds-col--padded slds-size--1-of-1 slds-medium-size--1-of-2">
+          
+            <div class="slds-form-element">
+            <div class="slds-form-element__control">
+            <lightning-dual-listbox name="Payment_Entities__c"
+                            label="Payment Entities"
+                            source-label="Available"
+                            selected-label="Selected"
+                            field-level-help="filters and displays results containing all the paymententities that are selected"
+                            value={paymentEntityValue}
+                            options={options}
+                            onchange={updateSearchKey}></lightning-dual-listbox>
+    
+         </div>
+        </div>    
+
+       </div>
+       </form>
+       <br>
+       
+      <div class="slds-m-top_small slds-m-bottom_medium">
+      <lightning-button label="Search" onclick={handleSearch} variant="brand" class="slds-m-left_x-small"></lightning-button> 
+      <lightning-button label="Reset" onclick={handleClear} variant="brand" class="slds-m-left_x-small"></lightning-button>
+      </div>
+
+   <template if:true={accountList}>
+    <div style="height: 500px">
+     <lightning-datatable key-field="id" 
+     data={accountList} 
+     columns={columns} 
+     default-sort-direction={defaultSortDirection}
+     sorted-direction={sortDirection}
+     sorted-by={sortedBy}
+     onsort={onHandleSort}
+     hide-checkbox-column="true">
+    </lightning-datatable>
+    </div>
+    {loadMoreStatus}
+   </template>
+     </div>
+   </div>
+ </template>

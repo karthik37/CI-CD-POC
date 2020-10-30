@@ -1,0 +1,14 @@
+<template>
+    <lightning-button label="Escalate Alert" onclick={handleCaseEscalation} variant="brand"></lightning-button>
+    <br>
+  <form class = "slds-form--stacked slds-grid slds-gutters">
+    <template if:true={alerts}>
+        <lightning-datatable
+          data={alerts.data}
+          columns={columns}
+          key-field="Id" 
+          onrowselection={handleRowSelection}> 
+    </lightning-datatable>
+    </template>
+</form>   
+</template>

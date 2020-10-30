@@ -1,0 +1,42 @@
+<template>
+    <lightning-input class="searchbar" 
+    label="Search"
+    value={keyword}
+    onchnge={handleKeywordChange}>
+    </lightning-input>
+
+    <lightning-datatable
+          class ="datatable"
+          data={transactions.data}
+          columns={columns}
+          key-field="Id"
+          sorted-by={sortedField}
+          sorted-direction={sortDirection}
+          onrowselection={handleRowSelect}
+          hide-checkbox-column="true">
+       </lightning-datatable>
+
+       <lightning-combobox class = "combobox" 
+       name="Number Of Records"
+       value="recordsPerpage"
+       placeholder="recordsPerpage"
+       options={comboBoxOptions}
+       onchange={handleComboBoxChange}
+       >
+
+       <div class="nav-buttons">
+           <template if:false={isFirstPage}>
+               <button onclick={handlePrevPage}>Previous Page</button>
+           </template>
+           <template if:false={isLastPage}>
+            <button onclick={handleNextPage}>Next Page</button>
+        </template>
+       </div>
+
+       <div class="page-info">
+           Total Records: {totlRecordCount}
+           Page ({pageNumber} of {totalPageCount})
+       </div>
+       </lightning-combobox>
+    
+</template>

@@ -1,0 +1,79 @@
+<template>
+  <div class="slds-m-around_medium">
+    <div class="slds-m-bottom_small">
+      <form class = "slds-form--stacked slds-grid slds-gutters" >
+        <!--col 1-->
+        <div class="slds-col--padded slds-size--1-of-1 slds-medium-size--1-of-2">
+          <div class="slds-form-element">
+            <legend class="slds-form-element__label">Alert Id</legend>
+            <div class="slds-form-element__control">
+              <lightning-input type="text" value={searchValue} onchange={searchKeyword}></lightning-input>
+            </div>
+          </div>
+          <div class="slds-form-element">
+            <fieldset class="slds-form--compound">
+              <legend class="slds-form-element__label">Run Date</legend>
+              <div class="form-element__group">
+                <div class="slds-form-element__row">
+                  <label class="slds-form-element__control slds-size--1-of-2">
+                      <lightning-input type="Date" placeholder="Min"></lightning-input>
+                  </label> 
+                  <label class="slds-form-element__control slds-size--1-of-2">
+                      <lightning-input type="Date" placeholder="Max" ></lightning-input>
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+          <div class="slds-form-element">
+            <fieldset class="slds-form--compound">
+              <legend class="slds-form-element__label">Money Laundering Risk Score</legend>
+              <div class="form-element__group">
+                <div class="slds-form-element__row">
+                  <label class="slds-form-element__control slds-size--1-of-2">
+                      <lightning-input type="Number" placeholder="Min"></lightning-input>
+                  </label> 
+                  <label class="slds-form-element__control slds-size--1-of-2">
+                      <lightning-input type="Number" placeholder="Max" ></lightning-input>
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+        <!--col 2-->
+        <div class="slds-col--padded slds-size--1-of-1 slds-medium-size--1-of-2">
+          <div class="slds-form-element">
+            <legend class="slds-form-element__label">Oracle Id</legend>
+            <div class="slds-form-element__control">
+              <lightning-input type="text" value={searchValue1} ></lightning-input>
+            </div>
+          </div>
+          <div class="slds-form-element">
+            <fieldset class="slds-form--compound">
+              <legend class="slds-form-element__label">Create Date</legend>
+              <div class="form-element__group">
+                <div class="slds-form-element__row">
+                  <label class="slds-form-element__control slds-size--1-of-2">
+                      <lightning-input type="Date" placeholder="Min" ></lightning-input>
+                  </label> 
+                  <label class="slds-form-element__control slds-size--1-of-2">
+                      <lightning-input type="Date" placeholder="Max"></lightning-input>
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+          <div class="slds-form-element"></div>
+        </div>
+      </form>
+      <lightning-button label="Search" onclick={handleSearchKeyword} variant="brand"></lightning-button>
+  <template if:true={alertList}>
+    <lightning-datatable key-field="id" data={alertList} columns={columns}> </lightning-datatable>
+ 
+  </template>
+    </div>
+  </div>
+  
+  
+</template>

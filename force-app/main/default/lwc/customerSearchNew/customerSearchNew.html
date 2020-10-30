@@ -1,0 +1,122 @@
+<template>
+    <div class="slds-m-around_medium">
+     
+        <div class="slds-m-bottom_small">
+            <lightning-input type="text"
+               value={accountName}
+               label="User Name"
+               onchange={updateSeachKey}
+               ></lightning-input>
+         </div>
+
+         <div class="slds-m-bottom_small">
+            <lightning-input type="text"
+               value={businessName}
+               label="Business Name"
+               onchange={updateBusinessName}
+               ></lightning-input>
+         </div>
+
+         <div class="slds-m-bottom_small">
+            <lightning-input type="text"
+               value={ebayEmployee}
+               label="Ebay Employee"
+               onchange={updateEbayEmployee}
+               ></lightning-input>
+         </div> 
+
+         <div class="slds-m-bottom_small">
+            <lightning-input type="text"
+               value={recordType}
+               label="Record Type"
+               onchange={updateRecordType}
+               ></lightning-input>
+         </div>
+         
+         <!-- <div class="slds-m-bottom_small">
+            <lightning-record-edit-form object-api-name="Account">
+            <lightning-input-field field-name="eBay_Employee_Indicator_Picklist__c" value={ebayEmployee} onchange={updateEbayEmployee}>
+            </lightning-input-field>
+         </lightning-record-edit-form>
+         </div>
+
+         <div class="slds-m-bottom_small">
+            <lightning-record-edit-form object-api-name="Account">
+            <lightning-input-field field-name="RecordType_Piclist__c" value={recordType} onchange={updateRecordType}>
+            </lightning-input-field>
+         </lightning-record-edit-form>
+         </div> -->
+         
+         <div class="slds-m-bottom_small">
+            <lightning-record-edit-form object-api-name="Account">
+            <lightning-input-field field-name="Payment_Entities__c" value={paymentEntity} onchange={updateSearchKey}>  <!--Line 11-->
+            </lightning-input-field>
+         </lightning-record-edit-form>
+         </div>
+         
+         <lightning-button label="Search"
+            onclick={handleSearch}
+            variant="brand"></lightning-button>
+            
+         <!-- custom data table(with SLDS style) to display contact list  -->  
+         <div if:true={accountList}>
+         <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-m-top_small">
+            <thead>
+               <tr class="slds-line-height_reset">
+                  <th class="" scope="col">
+                     <div class="slds-truncate" title="Name">Name</div>
+                  </th>
+                  <th class="" scope="col">
+                     <div class="slds-truncate" title="User Name">User Name</div>
+                  </th>
+                  <th class="" scope="col">
+                     <div class="slds-truncate" title="Business Name">Business Name</div>
+                  </th>
+                  <th class="" scope="col">
+                     <div class="slds-truncate" title="ebay Employee">ebay Employee</div>
+                  </th>
+                  <th class="" scope="col">
+                     <div class="slds-truncate" title="Payment Entities">Payment Entities</div>
+                  </th>
+                  <th class="" scope="col">
+                     <div class="slds-truncate" title="Record Type">Record Type Name</div>
+                  </th>
+               </tr>
+            </thead>
+            
+            <tbody>    
+               <template for:each={accountList} for:item="customer">
+                  <tr class="slds-hint-parent" key={customer.Id}>
+                     <td>
+                        <div class="slds-truncate">{customer.Name}</div>
+                     </td>
+                     <td>
+                        <div class="slds-truncate">{customer.User_Name__c}</div>
+                     </td>
+                     <td>
+                        <div class="slds-truncate">
+                            <div class="slds-truncate">{customer.Business_Name__c}</div>
+                        </div>
+                     </td>
+                     <td>
+                        <div class="slds-truncate">
+                            <div class="slds-truncate">{customer.eBay_Employee_Indicator__c}</div>
+                        </div>
+                     </td>
+                     <td>
+                        <div class="slds-truncate">
+                            <div class="slds-truncate">{customer.Payment_Entities__c}</div>
+                        </div>
+                     </td>
+                     <td>
+                        <div class="slds-truncate">
+                            <div class="slds-truncate">{customer.RecordType.Name}</div>
+                        </div>
+                     </td>
+                  </tr>
+               </template>
+            </tbody>
+         </table>
+      </div>
+      </div> 
+</template>
